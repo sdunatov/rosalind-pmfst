@@ -1,4 +1,4 @@
-def CycleToCromosome(seq):
+def CromosomeToCycle(seq):
   seq = seq.strip("()")
   seq = seq.split(" ")
   nodes = []
@@ -6,18 +6,18 @@ def CycleToCromosome(seq):
   st = ""
 
   for br in seq:
-    nodes.append(int(br))
+    chromosome.append(int(br))
 
-  for i in range(len(nodes)):
-    if(nodes[i] > 0):
-      chromosome.append(2 * abs(nodes[i]) - 1)
-      chromosome.append(2 * abs(nodes[i]))
-    if(nodes[i] < 0):
-      chromosome.append(2 * abs(nodes[i]))
-      chromosome.append(2 * abs(nodes[i]) - 1)
-      
   for i in range(len(chromosome)):
-    st += str(chromosome[i]) + " "
+    if(chromosome[i] > 0):
+      nodes.append(2 * abs(chromosome[i]) - 1)
+      nodes.append(2 * abs(chromosome[i]))
+    if(chromosome[i] < 0):
+      nodes.append(2 * abs(chromosome[i]))
+      nodes.append(2 * abs(chromosome[i]) - 1)
+      
+  for i in range(len(nodes)):
+    st += str(nodes[i]) + " "
   st = st[:-1]
   res = "(" + st + ")"
 
